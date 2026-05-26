@@ -15,6 +15,9 @@ public class Connect4 {
   private static char[][] board = new char[ROWS][COLS];
 
   public static void main(String[] args) {
+    // Force standard output to auto-flush so that piped Node.js streams receive chunks in real-time
+    System.setOut(new java.io.PrintStream(System.out, true));
+
     // Initialize the game board to be empty
     for (int i = 0; i < ROWS; i++) {
       for (int j = 0; j < COLS; j++) {
