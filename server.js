@@ -7,7 +7,7 @@ const path = require('path');
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
-  path: '/connect4/socket.io'
+  path: '/connect4/socket.io',
 });
 
 const PORT = process.env.PORT || 8081;
@@ -34,9 +34,11 @@ app.get('/', (req, res) => {
 // Parse the board array from the Java output
 function parseBoard(stdout) {
   const lines = stdout.split('\n');
-  const board = Array(6).fill(null).map(() => Array(7).fill(' '));
+  const board = Array(6)
+    .fill(null)
+    .map(() => Array(7).fill(' '));
   let foundBoard = false;
-  
+
   for (const line of lines) {
     // Check if line matches a row format e.g., |1| | |H|A| | | |
     const match = line.match(/^\|([1-6])\|(.*)\|$/);
@@ -90,10 +92,12 @@ function checkGameState(stdout) {
 
 io.on('connection', (socket) => {
   console.log(`New client connected: ${socket.id}`);
-  
+
   let javaProcess = null;
   let outputBuffer = '';
-  let currentBoard = Array(6).fill(null).map(() => Array(7).fill(' '));
+  let currentBoard = Array(6)
+    .fill(null)
+    .map(() => Array(7).fill(' '));
   let currentPrompt = null;
 
   const startGame = () => {
@@ -101,9 +105,11 @@ io.on('connection', (socket) => {
       javaProcess.kill();
     }
 
-    currentBoard = Array(6).fill(null).map(() => Array(7).fill(' '));
+    currentBoard = Array(6)
+      .fill(null)
+      .map(() => Array(7).fill(' '));
     currentPrompt = null;
-    
+
     // Spawn the Java Connect4 process
     javaProcess = spawn('java', ['Connect4'], { cwd: __dirname });
 
@@ -111,7 +117,7 @@ io.on('connection', (socket) => {
       const chunk = data.toString();
       outputBuffer += chunk;
       console.log(`[Java Stdout]: ${chunk}`);
-      
+
       const parsed = parseBoard(outputBuffer);
       if (parsed) {
         currentBoard = parsed;
@@ -126,7 +132,7 @@ io.on('connection', (socket) => {
         prompt: currentPrompt,
         winner: state.winner,
         gameOver: state.gameOver,
-        raw: outputBuffer
+        raw: outputBuffer,
       });
 
       // Clear standard prompts from buffer so we don't repeat them

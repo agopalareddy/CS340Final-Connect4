@@ -1,26 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Connect 4 — AI &amp; Human Matchmaker</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <!-- Unified Academic Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&amp;family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&amp;family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-N83BNQ64');</script>
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-N83BNQ64');
+    </script>
     <!-- End Google Tag Manager -->
-</head>
-<body>
-
+  </head>
+  <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N83BNQ64"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-N83BNQ64"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Skip Link for Keyboard Accessibility -->
@@ -28,328 +43,357 @@
 
     <!-- Top Navigation Bar (Back link & Theme Switcher) -->
     <div class="top-bar container">
-        <a href="/" class="back-home-link" aria-label="Back to Showcase Home">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="19" y1="12" x2="5" y2="12"/>
-                <polyline points="12 19 5 12 12 5"/>
-            </svg>
-            <span>Showcase Portfolio</span>
-        </a>
-        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark/light mode">
-            <!-- Sun SVG -->
-            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="5"/>
-                <line x1="12" y1="1" x2="12" y2="3"/>
-                <line x1="12" y1="21" x2="12" y2="23"/>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                <line x1="1" y1="12" x2="3" y2="12"/>
-                <line x1="21" y1="12" x2="23" y2="12"/>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-            </svg>
-            <!-- Moon SVG -->
-            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-            </svg>
-        </button>
+      <a href="/" class="back-home-link" aria-label="Back to Showcase Home">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <line x1="19" y1="12" x2="5" y2="12" />
+          <polyline points="12 19 5 12 12 5" />
+        </svg>
+        <span>Showcase Portfolio</span>
+      </a>
+      <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark/light mode">
+        <!-- Sun SVG -->
+        <svg
+          class="sun-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <!-- Moon SVG -->
+        <svg
+          class="moon-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+      </button>
     </div>
 
     <div class="app-container">
-        <header>
-            <span class="header-accent" aria-hidden="true">Minimax Alpha-Beta Solver</span>
-            <div class="logo">CONNECT<span>4</span></div>
-            <p class="tagline">Java Decision Engine &amp; Game Client</p>
-        </header>
+      <header>
+        <span class="header-accent" aria-hidden="true">Minimax Alpha-Beta Solver</span>
+        <div class="logo">CONNECT<span>4</span></div>
+        <p class="tagline">Java Decision Engine &amp; Game Client</p>
+      </header>
 
-        <main>
-            <!-- Game Configuration Panel -->
-            <div id="setup-panel" class="card fade-in">
-                <div class="card-header">
-                    <h2>Game Setup</h2>
-                    <p>Configure match parameters to initialize the Java game loop.</p>
-                </div>
-                <div class="card-body">
-                    <div id="human-question" class="question-step">
-                        <p class="prompt-text">Select Opponent Model:</p>
-                        <div class="btn-group">
-                            <button id="btn-vs-ai" class="btn btn-primary">Play Against AI</button>
-                            <button id="btn-vs-human" class="btn btn-secondary">Play Against Human</button>
-                        </div>
-                    </div>
-                    <div id="first-question" class="question-step hidden">
-                        <p class="prompt-text">Do you want to take the first turn?</p>
-                        <div class="btn-group">
-                            <button id="btn-first-yes" class="btn btn-primary">Yes, Go First</button>
-                            <button id="btn-first-no" class="btn btn-secondary">No, AI First</button>
-                        </div>
-                    </div>
-                </div>
+      <main>
+        <!-- Game Configuration Panel -->
+        <div id="setup-panel" class="card fade-in">
+          <div class="card-header">
+            <h2>Game Setup</h2>
+            <p>Configure match parameters to initialize the Java game loop.</p>
+          </div>
+          <div class="card-body">
+            <div id="human-question" class="question-step">
+              <p class="prompt-text">Select Opponent Model:</p>
+              <div class="btn-group">
+                <button id="btn-vs-ai" class="btn btn-primary">Play Against AI</button>
+                <button id="btn-vs-human" class="btn btn-secondary">Play Against Human</button>
+              </div>
+            </div>
+            <div id="first-question" class="question-step hidden">
+              <p class="prompt-text">Do you want to take the first turn?</p>
+              <div class="btn-group">
+                <button id="btn-first-yes" class="btn btn-primary">Yes, Go First</button>
+                <button id="btn-first-no" class="btn btn-secondary">No, AI First</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Play Area (Hidden until setup is done) -->
+        <div id="game-panel" class="hidden">
+          <div class="game-layout">
+            <!-- The Grid Board -->
+            <div class="board-container">
+              <div class="column-indicators">
+                <button class="col-drop-btn" data-col="1" aria-label="Drop in column 1">↓</button>
+                <button class="col-drop-btn" data-col="2" aria-label="Drop in column 2">↓</button>
+                <button class="col-drop-btn" data-col="3" aria-label="Drop in column 3">↓</button>
+                <button class="col-drop-btn" data-col="4" aria-label="Drop in column 4">↓</button>
+                <button class="col-drop-btn" data-col="5" aria-label="Drop in column 5">↓</button>
+                <button class="col-drop-btn" data-col="6" aria-label="Drop in column 6">↓</button>
+                <button class="col-drop-btn" data-col="7" aria-label="Drop in column 7">↓</button>
+              </div>
+              <div class="board" id="game-board">
+                <!-- JS will generate 42 cells (6 rows * 7 columns) -->
+              </div>
             </div>
 
-            <!-- Main Play Area (Hidden until setup is done) -->
-            <div id="game-panel" class="hidden">
-                <div class="game-layout">
-                    <!-- The Grid Board -->
-                    <div class="board-container">
-                        <div class="column-indicators">
-                            <button class="col-drop-btn" data-col="1" aria-label="Drop in column 1">↓</button>
-                            <button class="col-drop-btn" data-col="2" aria-label="Drop in column 2">↓</button>
-                            <button class="col-drop-btn" data-col="3" aria-label="Drop in column 3">↓</button>
-                            <button class="col-drop-btn" data-col="4" aria-label="Drop in column 4">↓</button>
-                            <button class="col-drop-btn" data-col="5" aria-label="Drop in column 5">↓</button>
-                            <button class="col-drop-btn" data-col="6" aria-label="Drop in column 6">↓</button>
-                            <button class="col-drop-btn" data-col="7" aria-label="Drop in column 7">↓</button>
-                        </div>
-                        <div class="board" id="game-board">
-                            <!-- JS will generate 42 cells (6 rows * 7 columns) -->
-                        </div>
-                    </div>
-
-                    <!-- Sidebar Status panel -->
-                    <div class="sidebar-panel">
-                        <div class="card status-card">
-                            <h3>Match Status</h3>
-                            <div class="status-indicator" id="status-indicator">
-                                <div class="pulse-indicator"></div>
-                                <span id="status-text">Initializing game server...</span>
-                            </div>
-                            <div class="turn-display" id="turn-display">
-                                <div class="player-pill player-h" id="pill-player1">Human</div>
-                                <span class="vs">vs</span>
-                                <div class="player-pill player-a" id="pill-player2">AI</div>
-                            </div>
-                            <button id="btn-restart" class="btn btn-danger">Reset Match</button>
-                        </div>
-                        
-                        <div class="card log-card">
-                            <h3>JVM Engine Logs</h3>
-                            <pre id="console-log">Connecting to Java terminal...</pre>
-                        </div>
-                    </div>
+            <!-- Sidebar Status panel -->
+            <div class="sidebar-panel">
+              <div class="card status-card">
+                <h3>Match Status</h3>
+                <div class="status-indicator" id="status-indicator">
+                  <div class="pulse-indicator"></div>
+                  <span id="status-text">Initializing game server...</span>
                 </div>
+                <div class="turn-display" id="turn-display">
+                  <div class="player-pill player-h" id="pill-player1">Human</div>
+                  <span class="vs">vs</span>
+                  <div class="player-pill player-a" id="pill-player2">AI</div>
+                </div>
+                <button id="btn-restart" class="btn btn-danger">Reset Match</button>
+              </div>
+
+              <div class="card log-card">
+                <h3>JVM Engine Logs</h3>
+                <pre id="console-log">Connecting to Java terminal...</pre>
+              </div>
             </div>
-        </main>
+          </div>
+        </div>
+      </main>
     </div>
 
     <!-- Win/Loss Overlay Modal -->
     <div id="game-over-modal" class="modal-overlay hidden">
-        <div class="modal-card">
-            <h2 id="modal-title">Match Finished!</h2>
-            <p id="modal-desc">The solver has completed the game.</p>
-            <button id="btn-modal-restart" class="btn btn-primary">Start New Game</button>
-        </div>
+      <div class="modal-card">
+        <h2 id="modal-title">Match Finished!</h2>
+        <p id="modal-desc">The solver has completed the game.</p>
+        <button id="btn-modal-restart" class="btn btn-primary">Start New Game</button>
+      </div>
     </div>
 
     <!-- Socket.IO Client Lib -->
     <script src="/connect4/socket.io/socket.io.js"></script>
     <script>
-        const socket = io({
-            path: '/connect4/socket.io'
-        });
-        
-        let gameState = {
-            board: null,
-            prompt: null,
-            winner: null,
-            gameOver: false,
-            againstHuman: false
-        };
+      const socket = io({
+        path: '/connect4/socket.io',
+      });
 
-        const setupPanel = document.getElementById('setup-panel');
-        const gamePanel = document.getElementById('game-panel');
-        const humanQuestion = document.getElementById('human-question');
-        const firstQuestion = document.getElementById('first-question');
-        const boardElement = document.getElementById('game-board');
-        const statusText = document.getElementById('status-text');
-        const consoleLog = document.getElementById('console-log');
-        const gameOverModal = document.getElementById('game-over-modal');
-        const modalTitle = document.getElementById('modal-title');
-        const modalDesc = document.getElementById('modal-desc');
+      let gameState = {
+        board: null,
+        prompt: null,
+        winner: null,
+        gameOver: false,
+        againstHuman: false,
+      };
 
-        // Create Grid Cells
-        const initializeGrid = () => {
-            boardElement.innerHTML = '';
-            for (let r = 0; r < 6; r++) {
-                for (let c = 0; c < 7; c++) {
-                    const cell = document.createElement('div');
-                    cell.className = 'cell';
-                    cell.dataset.row = r;
-                    cell.dataset.col = c;
-                    
-                    const slot = document.createElement('div');
-                    slot.className = 'slot empty';
-                    cell.appendChild(slot);
-                    
-                    // Allow clicking any cell in a column to make a move
-                    cell.addEventListener('click', () => {
-                        const col = c + 1; // 1-indexed column
-                        const firstBtn = document.querySelector('.col-drop-btn');
-                        if (firstBtn && !firstBtn.disabled) {
-                            socket.emit('input', col.toString());
-                        }
-                    });
+      const setupPanel = document.getElementById('setup-panel');
+      const gamePanel = document.getElementById('game-panel');
+      const humanQuestion = document.getElementById('human-question');
+      const firstQuestion = document.getElementById('first-question');
+      const boardElement = document.getElementById('game-board');
+      const statusText = document.getElementById('status-text');
+      const consoleLog = document.getElementById('console-log');
+      const gameOverModal = document.getElementById('game-over-modal');
+      const modalTitle = document.getElementById('modal-title');
+      const modalDesc = document.getElementById('modal-desc');
 
-                    boardElement.appendChild(cell);
-                }
-            }
-        };
+      // Create Grid Cells
+      const initializeGrid = () => {
+        boardElement.innerHTML = '';
+        for (let r = 0; r < 6; r++) {
+          for (let c = 0; c < 7; c++) {
+            const cell = document.createElement('div');
+            cell.className = 'cell';
+            cell.dataset.row = r;
+            cell.dataset.col = c;
 
-        initializeGrid();
+            const slot = document.createElement('div');
+            slot.className = 'slot empty';
+            cell.appendChild(slot);
 
-        // Start Java Process Socket Connection
-        socket.emit('start-game');
-
-        // Action Handlers
-        document.getElementById('btn-vs-ai').addEventListener('click', () => {
-            socket.emit('input', 'N');
-            gameState.againstHuman = false;
-            humanQuestion.classList.add('hidden');
-            firstQuestion.classList.remove('hidden');
-            
-            document.getElementById('pill-player1').textContent = 'Human';
-            document.getElementById('pill-player2').textContent = 'AI';
-            document.getElementById('pill-player1').className = 'player-pill player-h';
-            document.getElementById('pill-player2').className = 'player-pill player-a';
-        });
-
-        document.getElementById('btn-vs-human').addEventListener('click', () => {
-            socket.emit('input', 'Y');
-            gameState.againstHuman = true;
-            setupPanel.classList.add('hidden');
-            gamePanel.classList.remove('hidden');
-            statusText.textContent = 'Player 1 Turn';
-            
-            document.getElementById('pill-player1').textContent = 'Player 1';
-            document.getElementById('pill-player2').textContent = 'Player 2';
-            document.getElementById('pill-player1').className = 'player-pill player-1';
-            document.getElementById('pill-player2').className = 'player-pill player-2';
-        });
-
-        document.getElementById('btn-first-yes').addEventListener('click', () => {
-            socket.emit('input', 'Y');
-            setupPanel.classList.add('hidden');
-            gamePanel.classList.remove('hidden');
-            statusText.textContent = 'Your Turn';
-        });
-
-        document.getElementById('btn-first-no').addEventListener('click', () => {
-            socket.emit('input', 'N');
-            setupPanel.classList.add('hidden');
-            gamePanel.classList.remove('hidden');
-            statusText.textContent = 'AI is calculating...';
-        });
-
-        const resetGame = () => {
-            gameOverModal.classList.add('hidden');
-            setupPanel.classList.remove('hidden');
-            gamePanel.classList.add('hidden');
-            humanQuestion.classList.remove('hidden');
-            firstQuestion.classList.add('hidden');
-            initializeGrid();
-            socket.emit('start-game');
-        };
-
-        document.getElementById('btn-restart').addEventListener('click', resetGame);
-        document.getElementById('btn-modal-restart').addEventListener('click', resetGame);
-
-        // Column Drop Buttons
-        document.querySelectorAll('.col-drop-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const col = btn.dataset.col;
-                socket.emit('input', col);
+            // Allow clicking any cell in a column to make a move
+            cell.addEventListener('click', () => {
+              const col = c + 1; // 1-indexed column
+              const firstBtn = document.querySelector('.col-drop-btn');
+              if (firstBtn && !firstBtn.disabled) {
+                socket.emit('input', col.toString());
+              }
             });
+
+            boardElement.appendChild(cell);
+          }
+        }
+      };
+
+      initializeGrid();
+
+      // Start Java Process Socket Connection
+      socket.emit('start-game');
+
+      // Action Handlers
+      document.getElementById('btn-vs-ai').addEventListener('click', () => {
+        socket.emit('input', 'N');
+        gameState.againstHuman = false;
+        humanQuestion.classList.add('hidden');
+        firstQuestion.classList.remove('hidden');
+
+        document.getElementById('pill-player1').textContent = 'Human';
+        document.getElementById('pill-player2').textContent = 'AI';
+        document.getElementById('pill-player1').className = 'player-pill player-h';
+        document.getElementById('pill-player2').className = 'player-pill player-a';
+      });
+
+      document.getElementById('btn-vs-human').addEventListener('click', () => {
+        socket.emit('input', 'Y');
+        gameState.againstHuman = true;
+        setupPanel.classList.add('hidden');
+        gamePanel.classList.remove('hidden');
+        statusText.textContent = 'Player 1 Turn';
+
+        document.getElementById('pill-player1').textContent = 'Player 1';
+        document.getElementById('pill-player2').textContent = 'Player 2';
+        document.getElementById('pill-player1').className = 'player-pill player-1';
+        document.getElementById('pill-player2').className = 'player-pill player-2';
+      });
+
+      document.getElementById('btn-first-yes').addEventListener('click', () => {
+        socket.emit('input', 'Y');
+        setupPanel.classList.add('hidden');
+        gamePanel.classList.remove('hidden');
+        statusText.textContent = 'Your Turn';
+      });
+
+      document.getElementById('btn-first-no').addEventListener('click', () => {
+        socket.emit('input', 'N');
+        setupPanel.classList.add('hidden');
+        gamePanel.classList.remove('hidden');
+        statusText.textContent = 'AI is calculating...';
+      });
+
+      const resetGame = () => {
+        gameOverModal.classList.add('hidden');
+        setupPanel.classList.remove('hidden');
+        gamePanel.classList.add('hidden');
+        humanQuestion.classList.remove('hidden');
+        firstQuestion.classList.add('hidden');
+        initializeGrid();
+        socket.emit('start-game');
+      };
+
+      document.getElementById('btn-restart').addEventListener('click', resetGame);
+      document.getElementById('btn-modal-restart').addEventListener('click', resetGame);
+
+      // Column Drop Buttons
+      document.querySelectorAll('.col-drop-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const col = btn.dataset.col;
+          socket.emit('input', col);
         });
+      });
 
-        // Socket Events
-        socket.on('game-update', (data) => {
-            console.log('Received Game Update', data);
-            gameState = { ...gameState, ...data };
+      // Socket Events
+      socket.on('game-update', (data) => {
+        console.log('Received Game Update', data);
+        gameState = { ...gameState, ...data };
 
-            if (data.raw) {
-                consoleLog.textContent = data.raw;
-                consoleLog.scrollTop = consoleLog.scrollHeight;
-            }
-
-            if (data.board) {
-                renderBoard(data.board);
-            }
-
-            if (data.gameOver) {
-                showGameOver(data.winner);
-            } else if (data.prompt === 'PLAY_MOVE') {
-                statusText.textContent = gameState.againstHuman ? "Player's turn" : "Your turn";
-                document.querySelectorAll('.col-drop-btn').forEach(b => b.disabled = false);
-            } else {
-                if (!gameState.againstHuman && data.prompt === null) {
-                    statusText.textContent = "AI thinking...";
-                    document.querySelectorAll('.col-drop-btn').forEach(b => b.disabled = true);
-                }
-            }
-        });
-
-        const renderBoard = (board) => {
-            for (let r = 0; r < 6; r++) {
-                for (let c = 0; c < 7; c++) {
-                    const cell = document.querySelector(`.cell[data-row="${r}"][data-col="${c}"]`);
-                    if (cell) {
-                        const slot = cell.querySelector('.slot');
-                        const val = board[r][c];
-                        
-                        slot.className = 'slot';
-                        if (val === 'H') {
-                            slot.classList.add('human');
-                        } else if (val === 'A') {
-                            slot.classList.add('ai');
-                        } else if (val === '1') {
-                            slot.classList.add('p1');
-                        } else if (val === '2') {
-                            slot.classList.add('p2');
-                        } else {
-                            slot.classList.add('empty');
-                        }
-                    }
-                }
-            }
-        };
-
-        const showGameOver = (winner) => {
-            modalTitle.textContent = winner === 'Tie' ? "It's a Tie!" : `${winner} Wins!`;
-            modalDesc.textContent = winner === 'Tie' 
-                ? "The game board is completely full." 
-                : `Congratulations to ${winner} for taking the victory!`;
-            gameOverModal.classList.remove('hidden');
-        };
-
-        // ─── THEME SWITCHING SYSTEM ───
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const htmlEl = document.documentElement;
-
-        function setTheme(theme) {
-            if (theme === 'dark') {
-                htmlEl.classList.remove('theme-light');
-                htmlEl.classList.add('theme-dark');
-                localStorage.setItem('theme', 'dark');
-            } else if (theme === 'light') {
-                htmlEl.classList.remove('theme-dark');
-                htmlEl.classList.add('theme-light');
-                localStorage.setItem('theme', 'light');
-            } else {
-                htmlEl.classList.remove('theme-light', 'theme-dark');
-                localStorage.removeItem('theme');
-            }
+        if (data.raw) {
+          consoleLog.textContent = data.raw;
+          consoleLog.scrollTop = consoleLog.scrollHeight;
         }
 
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            setTheme(savedTheme);
+        if (data.board) {
+          renderBoard(data.board);
         }
 
-        themeToggleBtn.addEventListener('click', () => {
-            const isDark = htmlEl.classList.contains('theme-dark') || 
-                           (!htmlEl.classList.contains('theme-light') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-            setTheme(isDark ? 'light' : 'dark');
-        });
+        if (data.gameOver) {
+          showGameOver(data.winner);
+        } else if (data.prompt === 'PLAY_MOVE') {
+          statusText.textContent = gameState.againstHuman ? "Player's turn" : 'Your turn';
+          document.querySelectorAll('.col-drop-btn').forEach((b) => (b.disabled = false));
+        } else {
+          if (!gameState.againstHuman && data.prompt === null) {
+            statusText.textContent = 'AI thinking...';
+            document.querySelectorAll('.col-drop-btn').forEach((b) => (b.disabled = true));
+          }
+        }
+      });
+
+      const renderBoard = (board) => {
+        for (let r = 0; r < 6; r++) {
+          for (let c = 0; c < 7; c++) {
+            const cell = document.querySelector(`.cell[data-row="${r}"][data-col="${c}"]`);
+            if (cell) {
+              const slot = cell.querySelector('.slot');
+              const val = board[r][c];
+
+              slot.className = 'slot';
+              if (val === 'H') {
+                slot.classList.add('human');
+              } else if (val === 'A') {
+                slot.classList.add('ai');
+              } else if (val === '1') {
+                slot.classList.add('p1');
+              } else if (val === '2') {
+                slot.classList.add('p2');
+              } else {
+                slot.classList.add('empty');
+              }
+            }
+          }
+        }
+      };
+
+      const showGameOver = (winner) => {
+        modalTitle.textContent = winner === 'Tie' ? "It's a Tie!" : `${winner} Wins!`;
+        modalDesc.textContent =
+          winner === 'Tie'
+            ? 'The game board is completely full.'
+            : `Congratulations to ${winner} for taking the victory!`;
+        gameOverModal.classList.remove('hidden');
+      };
+
+      // ─── THEME SWITCHING SYSTEM ───
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      const htmlEl = document.documentElement;
+
+      function setTheme(theme) {
+        if (theme === 'dark') {
+          htmlEl.classList.remove('theme-light');
+          htmlEl.classList.add('theme-dark');
+          localStorage.setItem('theme', 'dark');
+        } else if (theme === 'light') {
+          htmlEl.classList.remove('theme-dark');
+          htmlEl.classList.add('theme-light');
+          localStorage.setItem('theme', 'light');
+        } else {
+          htmlEl.classList.remove('theme-light', 'theme-dark');
+          localStorage.removeItem('theme');
+        }
+      }
+
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        setTheme(savedTheme);
+      }
+
+      themeToggleBtn.addEventListener('click', () => {
+        const isDark =
+          htmlEl.classList.contains('theme-dark') ||
+          (!htmlEl.classList.contains('theme-light') &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches);
+        setTheme(isDark ? 'light' : 'dark');
+      });
     </script>
-</body>
+  </body>
 </html>
