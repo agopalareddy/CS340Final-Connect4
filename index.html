@@ -160,7 +160,7 @@
                   <span class="vs">vs</span>
                   <div class="player-pill player-a" id="pill-player2">AI</div>
                 </div>
-                <button id="btn-restart" class="btn btn-danger">Reset Match</button>
+                <button id="btn-restart" class="btn btn-danger">Start New Game</button>
               </div>
 
               <div class="card log-card">
@@ -178,7 +178,7 @@
       <div class="modal-card">
         <h2 id="modal-title">Match Finished!</h2>
         <p id="modal-desc">The solver has completed the game.</p>
-        <button id="btn-modal-restart" class="btn btn-primary">Start New Game</button>
+        <button id="btn-show-results" class="btn btn-primary">Show Results</button>
       </div>
     </div>
 
@@ -207,6 +207,8 @@
       const gameOverModal = document.getElementById('game-over-modal');
       const modalTitle = document.getElementById('modal-title');
       const modalDesc = document.getElementById('modal-desc');
+      const statusIndicator = document.getElementById('status-indicator');
+      const btnShowResults = document.getElementById('btn-show-results');
 
       // Create Grid Cells
       const initializeGrid = () => {
@@ -287,12 +289,20 @@
         gamePanel.classList.add('hidden');
         humanQuestion.classList.remove('hidden');
         firstQuestion.classList.add('hidden');
+        statusIndicator.classList.remove('game-over');
+        document.querySelectorAll('.col-drop-btn').forEach((b) => (b.disabled = false));
         initializeGrid();
         socket.emit('start-game');
       };
 
       document.getElementById('btn-restart').addEventListener('click', resetGame);
-      document.getElementById('btn-modal-restart').addEventListener('click', resetGame);
+
+      btnShowResults.addEventListener('click', () => {
+        gameOverModal.classList.add('hidden');
+        statusIndicator.classList.add('game-over');
+        statusText.textContent =
+          gameState.winner === 'Tie' ? "It's a Tie! Game Over." : `${gameState.winner} Wins! Game Over.`;
+      });
 
       // Column Drop Buttons
       document.querySelectorAll('.col-drop-btn').forEach((btn) => {
@@ -361,6 +371,7 @@
             ? 'The game board is completely full.'
             : `Congratulations to ${winner} for taking the victory!`;
         gameOverModal.classList.remove('hidden');
+        document.querySelectorAll('.col-drop-btn').forEach((b) => (b.disabled = true));
       };
 
       // ─── THEME SWITCHING SYSTEM ───

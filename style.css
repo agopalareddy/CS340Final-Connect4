@@ -524,6 +524,11 @@ main {
   animation: pulse 1.8s infinite ease-in-out;
 }
 
+.status-indicator.game-over .pulse-indicator {
+  background: var(--accent);
+  animation: none;
+}
+
 .turn-display {
   display: flex;
   align-items: center;
