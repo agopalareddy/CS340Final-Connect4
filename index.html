@@ -3,13 +3,71 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Connect 4 — AI &amp; Human Matchmaker</title>
-    <link rel="stylesheet" href="style.css" />
-    <!-- Unified Academic Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&amp;family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap"
-      rel="stylesheet"
+    <meta
+      name="description"
+      content="Play Connect 4 against a Java minimax AI with alpha-beta pruning, or challenge a friend. A live Node.js + Socket.IO game client."
     />
+    <title>Connect 4 — AI &amp; Human Matchmaker</title>
+    <link rel="stylesheet" href="style.css?v=2.0.0" />
+    <link rel="stylesheet" href="/assets/fonts/fonts.css" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      crossorigin="anonymous"
+    />
+
+    <!-- Favicons & Mobile Device Integration -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/mstile-150x150.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/mstile-70x70.png" />
+    <link rel="manifest" href="/images/manifest.json" />
+    <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#1a3478" />
+    <meta name="msapplication-TileColor" content="#1a3478" />
+    <meta name="msapplication-TileImage" content="/images/mstile-144x144.png" />
+    <meta name="msapplication-config" content="/images/browserconfig.xml" />
+    <meta name="theme-color" content="#f7f8fa" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#12141a" media="(prefers-color-scheme: dark)" />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://agreddy.com/connect4/" />
+    <meta property="og:title" content="Connect 4 — AI & Human Matchmaker" />
+    <meta
+      property="og:description"
+      content="Play Connect 4 against a Java minimax AI with alpha-beta pruning, or challenge a friend in real time."
+    />
+    <meta property="og:image" content="https://agreddy.com/images/profile.png" />
+    <meta property="og:site_name" content="Aadarsha Gopala Reddy" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://agreddy.com/connect4/" />
+    <meta name="twitter:title" content="Connect 4 — AI & Human Matchmaker" />
+    <meta
+      name="twitter:description"
+      content="Play Connect 4 against a Java minimax AI with alpha-beta pruning, or challenge a friend in real time."
+    />
+    <meta name="twitter:image" content="https://agreddy.com/images/profile.png" />
+    <meta name="twitter:site" content="@aadarsha2002" />
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://agreddy.com/connect4/" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "Connect 4 — AI & Human Matchmaker",
+        "url": "https://agreddy.com/connect4/",
+        "applicationCategory": "Game",
+        "author": {
+          "@type": "Person",
+          "name": "Aadarsha Gopala Reddy",
+          "url": "https://agreddy.com"
+        }
+      }
+    </script>
 
     <!-- Google Tag Manager -->
     <script>
@@ -42,70 +100,37 @@
     <a href="#game-board" class="skip-link">Skip to Game Board</a>
 
     <!-- Top Navigation Bar (Back link & Theme Switcher) -->
-    <div class="top-bar container">
-      <a href="/" class="back-home-link" aria-label="Back to Showcase Home">
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <line x1="19" y1="12" x2="5" y2="12" />
-          <polyline points="12 19 5 12 12 5" />
-        </svg>
-        <span>Showcase Portfolio</span>
-      </a>
-      <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark/light mode">
-        <!-- Sun SVG -->
-        <svg
-          class="sun-icon"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <circle cx="12" cy="12" r="5" />
-          <line x1="12" y1="1" x2="12" y2="3" />
-          <line x1="12" y1="21" x2="12" y2="23" />
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-          <line x1="1" y1="12" x2="3" y2="12" />
-          <line x1="21" y1="12" x2="23" y2="12" />
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-        </svg>
-        <!-- Moon SVG -->
-        <svg
-          class="moon-icon"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-        </svg>
-      </button>
-    </div>
+    <header class="top-header">
+      <div class="top-bar container">
+        <a href="/" class="back-home-link" aria-label="Back to Showcase Home">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <line x1="19" y1="12" x2="5" y2="12" />
+            <polyline points="12 19 5 12 12 5" />
+          </svg>
+          <span>Showcase Portfolio</span>
+        </a>
+        <div id="theme-toggle" aria-label="Toggle theme"></div>
+      </div>
+    </header>
 
     <div class="app-container">
-      <header>
-        <span class="header-accent" aria-hidden="true">Minimax Alpha-Beta Solver</span>
-        <div class="logo">CONNECT<span>4</span></div>
-        <p class="tagline">Java Decision Engine &amp; Game Client</p>
-      </header>
-
       <main>
+        <div class="page-header">
+          <span class="header-accent" aria-hidden="true">Minimax Alpha-Beta Solver</span>
+          <h1 class="logo">CONNECT<span>4</span></h1>
+          <p class="tagline">Java Decision Engine &amp; Game Client</p>
+        </div>
+
         <!-- Game Configuration Panel -->
-        <div id="setup-panel" class="card fade-in">
+        <div id="setup-panel" class="card spotlight-card fade-in">
           <div class="card-header">
             <h2>Game Setup</h2>
             <p>Configure match parameters to initialize the Java game loop.</p>
@@ -132,7 +157,7 @@
         <div id="game-panel" class="hidden">
           <div class="game-layout">
             <!-- The Grid Board -->
-            <div class="board-container">
+            <div class="board-container spotlight-card">
               <div class="column-indicators">
                 <button class="col-drop-btn" data-col="1" aria-label="Drop in column 1">↓</button>
                 <button class="col-drop-btn" data-col="2" aria-label="Drop in column 2">↓</button>
@@ -149,11 +174,11 @@
 
             <!-- Sidebar Status panel -->
             <div class="sidebar-panel">
-              <div class="card status-card">
+              <div class="card status-card spotlight-card">
                 <h3>Match Status</h3>
                 <div class="status-indicator" id="status-indicator">
-                  <div class="pulse-indicator"></div>
-                  <span id="status-text">Initializing game server...</span>
+                  <div class="pulse-indicator" aria-hidden="true"></div>
+                  <span id="status-text" aria-live="polite">Initializing game server...</span>
                 </div>
                 <div class="turn-display" id="turn-display">
                   <div class="player-pill player-h" id="pill-player1">Human</div>
@@ -163,7 +188,7 @@
                 <button id="btn-restart" class="btn btn-danger">Start New Game</button>
               </div>
 
-              <div class="card log-card">
+              <div class="card log-card spotlight-card">
                 <h3>JVM Engine Logs</h3>
                 <pre id="console-log">Connecting to Java terminal...</pre>
               </div>
@@ -174,16 +199,17 @@
     </div>
 
     <!-- Win/Loss Overlay Modal -->
-    <div id="game-over-modal" class="modal-overlay hidden">
+    <dialog id="game-over-modal" class="game-over-modal">
       <div class="modal-card">
         <h2 id="modal-title">Match Finished!</h2>
         <p id="modal-desc">The solver has completed the game.</p>
         <button id="btn-show-results" class="btn btn-primary">Show Results</button>
       </div>
-    </div>
+    </dialog>
 
     <!-- Socket.IO Client Lib -->
     <script src="/connect4/socket.io/socket.io.js"></script>
+    <script src="/assets/js/theme.js"></script>
     <script>
       const socket = io({
         path: '/connect4/socket.io',
@@ -284,7 +310,7 @@
       });
 
       const resetGame = () => {
-        gameOverModal.classList.add('hidden');
+        gameOverModal.close();
         setupPanel.classList.remove('hidden');
         gamePanel.classList.add('hidden');
         humanQuestion.classList.remove('hidden');
@@ -298,10 +324,12 @@
       document.getElementById('btn-restart').addEventListener('click', resetGame);
 
       btnShowResults.addEventListener('click', () => {
-        gameOverModal.classList.add('hidden');
+        gameOverModal.close();
         statusIndicator.classList.add('game-over');
         statusText.textContent =
-          gameState.winner === 'Tie' ? "It's a Tie! Game Over." : `${gameState.winner} Wins! Game Over.`;
+          gameState.winner === 'Tie'
+            ? "It's a Tie! Game Over."
+            : `${gameState.winner} Wins! Game Over.`;
       });
 
       // Column Drop Buttons
@@ -370,40 +398,17 @@
           winner === 'Tie'
             ? 'The game board is completely full.'
             : `Congratulations to ${winner} for taking the victory!`;
-        gameOverModal.classList.remove('hidden');
+        if (!gameOverModal.open) gameOverModal.showModal();
         document.querySelectorAll('.col-drop-btn').forEach((b) => (b.disabled = true));
       };
 
-      // ─── THEME SWITCHING SYSTEM ───
-      const themeToggleBtn = document.getElementById('theme-toggle');
-      const htmlEl = document.documentElement;
-
-      function setTheme(theme) {
-        if (theme === 'dark') {
-          htmlEl.classList.remove('theme-light');
-          htmlEl.classList.add('theme-dark');
-          localStorage.setItem('theme', 'dark');
-        } else if (theme === 'light') {
-          htmlEl.classList.remove('theme-dark');
-          htmlEl.classList.add('theme-light');
-          localStorage.setItem('theme', 'light');
-        } else {
-          htmlEl.classList.remove('theme-light', 'theme-dark');
-          localStorage.removeItem('theme');
-        }
-      }
-
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        setTheme(savedTheme);
-      }
-
-      themeToggleBtn.addEventListener('click', () => {
-        const isDark =
-          htmlEl.classList.contains('theme-dark') ||
-          (!htmlEl.classList.contains('theme-light') &&
-            window.matchMedia('(prefers-color-scheme: dark)').matches);
-        setTheme(isDark ? 'light' : 'dark');
+      // ── Spotlight cursor glow tracking ──
+      document.querySelectorAll('.spotlight-card').forEach((card) => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+          card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        });
       });
     </script>
   </body>
