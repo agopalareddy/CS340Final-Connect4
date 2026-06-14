@@ -99,12 +99,15 @@ public class Connect4 {
 
   // This method is called during the human player's turn
   private static void humanTurn() {
-    // Prompt the player to enter a column where they want to place their piece
-    System.out.println("Enter a column (1-7): ");
-    int col = scanner.nextInt();
+    // Keep prompting until a valid (non-full) column is chosen
+    boolean placed = false;
+    while (!placed) {
+      System.out.println("Enter a column (1-7): ");
+      int col = scanner.nextInt();
 
-    // Place the piece in the selected column
-    placePiece(col, 'H');
+      // Place the piece in the selected column
+      placed = placePiece(col, 'H');
+    }
 
     // Print the updated board
     printBoard();
@@ -113,12 +116,15 @@ public class Connect4 {
   // This method is called during the human player's turn when playing against
   // another human
   private static void humanTurn(int player) {
-    // Prompt the player to enter a column where they want to place their piece
-    System.out.println("Player " + player + ", enter a column (1-7): ");
-    int col = scanner.nextInt();
+    // Keep prompting until a valid (non-full) column is chosen
+    boolean placed = false;
+    while (!placed) {
+      System.out.println("Player " + player + ", enter a column (1-7): ");
+      int col = scanner.nextInt();
 
-    // Place the piece in the selected column
-    placePiece(col, (char) (player + '0'));
+      // Place the piece in the selected column
+      placed = placePiece(col, (char) (player + '0'));
+    }
 
     // Print the updated board
     printBoard();
@@ -245,17 +251,19 @@ public class Connect4 {
     return false;
   }
 
-  // This method places a piece on the game board
-  private static void placePiece(int col, char player) {
+  // This method places a piece on the game board. Returns true if the piece
+  // was placed successfully, false if the move was invalid (out of range or
+  // the column is full).
+  private static boolean placePiece(int col, char player) {
     // Check if the selected column is valid
     if (col < 1 || col > COLS) {
       System.out.println("Invalid column!");
-      return;
+      return false;
     }
     // Check if the selected column is full
     if (board[0][col - 1] != ' ') {
       System.out.println("Column is full!");
-      return;
+      return false;
     }
 
     // Loop through the rows from bottom to top
@@ -263,9 +271,11 @@ public class Connect4 {
       // If the current cell is empty, place the piece in this cell
       if (board[i][col - 1] == ' ') {
         board[i][col - 1] = player;
-        return;
+        return true;
       }
     }
+
+    return false;
   }
 
   // This method generates a list of all possible moves that the AI player can
